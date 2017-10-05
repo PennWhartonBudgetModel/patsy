@@ -112,7 +112,7 @@ def test_pickling_same_version_roundtrips():
 
 
 def check_pickling_same_version_roundtrips(obj):
-        pickled_obj = pickle.loads(pickle.dumps(obj, pickle.HIGHEST_PROTOCOL))
+        pickled_obj = pickle.loads(pickle.dumps(obj, 2))
         assert_pickled_equals(obj, pickled_obj)
 
 
@@ -148,7 +148,7 @@ def test_pickling_transforms():
 
 
 def check_pickling_transforms(obj, args, kwargs):
-    pickled_obj = pickle.loads(pickle.dumps(obj, pickle.HIGHEST_PROTOCOL))
+    pickled_obj = pickle.loads(pickle.dumps(obj, 2))
     np.testing.assert_allclose(obj.transform(*args, **kwargs),
                                pickled_obj.transform(*args, **kwargs))
 
